@@ -1,8 +1,9 @@
-package cl.nodalnet.sowing.model.retrofit
+package cl.nodalnet.sowing.model.room
 
-
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "master_table")
 data class SowingItem(
     @SerializedName("id")           val id: String,
     @SerializedName("name")         val name: String,

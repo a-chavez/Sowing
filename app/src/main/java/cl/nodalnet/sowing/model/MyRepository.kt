@@ -3,7 +3,6 @@ package cl.nodalnet.sowing.model
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import cl.nodalnet.sowing.model.retrofit.RetrofitClient
-import cl.nodalnet.sowing.model.retrofit.SowingItem
 import cl.nodalnet.sowing.model.retrofit.SowingList
 import retrofit2.Call
 import retrofit2.Callback
