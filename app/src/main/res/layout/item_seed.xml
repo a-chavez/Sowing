@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/backHome"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSeedNameItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amita"
+        android:text="ejemplo"
+        android:textAlignment="center"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/backHome"
+        app:layout_constraintEnd_toEndOf="@+id/backHome"
+        app:layout_constraintStart_toEndOf="@+id/imageSeedHome"
+        app:layout_constraintTop_toTopOf="@+id/backHome" />
+
+    <ImageView
+        android:id="@+id/imageSeedHome"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/backHome"
+        app:layout_constraintStart_toStartOf="@+id/backHome"
+        app:layout_constraintTop_toTopOf="@+id/backHome"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>
