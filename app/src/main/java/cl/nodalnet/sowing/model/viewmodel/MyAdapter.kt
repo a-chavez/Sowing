@@ -9,7 +9,7 @@ import cl.nodalnet.sowing.model.room.SowingItem
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_seed.view.*
 
-class MyAdapter : RecyclerView.Adapter<MyAdapter.mViewHolder>() {
+class MyAdapter (var mSeedNameTxt: SeedNameTxt): RecyclerView.Adapter<MyAdapter.mViewHolder>() {
 
     private var dataList = emptyList<SowingItem>()
 
@@ -25,9 +25,8 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.mViewHolder>() {
         val itemView = itemView.setOnClickListener(this)
 
         override fun onClick(p0: View?) {
-            // click XD
+            mSeedNameTxt.passData(dataList[adapterPosition].name)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): mViewHolder {
@@ -44,6 +43,8 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.mViewHolder>() {
 
     override fun getItemCount() = dataList.size
 
-
+    interface SeedNameTxt{
+        fun passData(mSeedNameTxt: String )
+    }
 
 }

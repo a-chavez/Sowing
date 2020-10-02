@@ -6,12 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import cl.nodalnet.sowing.model.viewmodel.MyViewModel
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_detail.*
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class Detail : Fragment() {
+
+    var mSeedNameTxt: String? =null
+    lateinit var mViewModel: MyViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        arguments?.let {
+            mSeedNameTxt = it.getString("seedName","")
+        }
+
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +37,12 @@ class Detail : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mSeedNameTxt?.let {
+            mViewModel.getOneSeed(it).observe(viewLifecycleOwner, Observer {
+                tvSeedName.setText(it.name)
+                Glide.with(this).load(it.urlImage).into(imgDetail)
+            })
+        }
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }

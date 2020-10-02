@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,7 +14,7 @@ import cl.nodalnet.sowing.model.viewmodel.MyAdapter
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class Home : Fragment() {
+class Home : Fragment(), MyAdapter.SeedNameTxt  {
 
     lateinit var mViewModel:MyViewModel
 
@@ -37,7 +36,7 @@ class Home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mRecyclerView = recyclerView2
-        val mAdapter = MyAdapter()
+        val mAdapter = MyAdapter(this)
 
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -46,13 +45,13 @@ class Home : Fragment() {
             Log.d("Arroz", it.toString())
             mAdapter.updateListSeed(it)
         })
-
-/*
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
-
- */
     }
+
+    override fun passData(mSeedNameTxt: String) {
+            val mBundle = Bundle()
+            mBundle.putString("seedName", mSeedNameTxt)
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,mBundle)
+    }
+
 
 }
