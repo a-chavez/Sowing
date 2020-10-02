@@ -10,6 +10,8 @@
     <string name="second_fragment_label">Detail Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="hello">Hello</string>
+    <string name="john">John</string>
 
 
 </resources>
