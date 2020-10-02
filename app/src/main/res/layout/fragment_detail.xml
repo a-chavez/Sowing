@@ -36,6 +36,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/back"
         android:fontFamily="@font/amita"
+        android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="Semilla"
         android:textAlignment="viewStart"

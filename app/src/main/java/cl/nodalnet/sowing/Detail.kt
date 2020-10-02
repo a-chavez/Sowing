@@ -39,7 +39,7 @@ class Detail : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mSeedNameTxt?.let {
             mViewModel.getOneSeed(it).observe(viewLifecycleOwner, Observer {
-                tvSeedName.setText(it.name)
+                tvSeedName.setText(it.name.capitalize())
                 Glide.with(this).load(it.urlImage).into(imgDetail)
             })
         }
