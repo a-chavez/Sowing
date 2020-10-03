@@ -38,42 +38,41 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
         return mMyRepository.getOneSeed(mName)
     }
 
-    fun getSeedForMonth(mMonth:String) : LiveData<List<SowingItem>>{
-        return mMyRepository.getSeedForMonth(mMonth)
-    }
-
     fun getCurrentMonth(): Array<String> {
         val currentMonth: Int = Calendar.getInstance().get(Calendar.MONTH)+1
         var mMonth :String =""
         var fullMonth : String =""
         when (currentMonth) {
             1->  {mMonth= "ene"
-                    fullMonth ="enero" }
+                    fullMonth ="Enero" }
             2->  {mMonth= "feb"
-                    fullMonth ="febrero" }
+                    fullMonth ="Febrero" }
             3->  {mMonth= "mar"
-                    fullMonth ="marzo" }
+                    fullMonth ="Marzo" }
             4->  {mMonth= "abr"
-                    fullMonth ="abril" }
+                    fullMonth ="Abril" }
             5->  {mMonth= "may"
-                    fullMonth ="mayo" }
+                    fullMonth ="Mayo" }
             6->  {mMonth= "jun"
-                    fullMonth ="junio" }
+                    fullMonth ="Junio" }
             7->  {mMonth= "jul"
-                    fullMonth ="julio" }
+                    fullMonth ="Julio" }
             8->  {mMonth= "ago"
-                    fullMonth ="agosto" }
+                    fullMonth ="Agosto" }
             9->  {mMonth= "sep"
-                    fullMonth ="septiembre" }
+                    fullMonth ="Septiembre" }
             10->  {mMonth= "oct"
-                    fullMonth ="octubre" }
+                    fullMonth ="Octubre" }
             11->  {mMonth= "nov"
-                    fullMonth ="noviembre" }
+                    fullMonth ="Noviembre" }
             12->  {mMonth= "dic"
-                    fullMonth ="diciembre" }
+                    fullMonth ="Diciembre" }
         }
         return arrayOf(mMonth,fullMonth)
     }
 
+    fun getSeedFromMonth(mMonth:String, mSowing:List<SowingItem>) : List<SowingItem>{
+        return mMyRepository.getSeedFromMonth(mMonth,mSowing)
+    }
 
 }

@@ -27,6 +27,7 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
 
         mViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
 
+
     }
 
     override fun onCreateView(
@@ -42,7 +43,8 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
 
         val mRecyclerView = recyclerView2
         val mAdapter = MyAdapter(this)
-        val mFullMonth = mViewModel.getCurrentMonth()[1]
+        val mFullMonth:String = mViewModel.getCurrentMonth()[1]
+        var mActualMonth:String = mViewModel.getCurrentMonth()[0]
 
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -52,10 +54,9 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
             .into(imgTitleHome)
         tvMonthHome.setText(mFullMonth)
 
-        mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {
-            Log.d("Arroz", it.toString())
-
-            mAdapter.updateListSeed(it)
+        mViewModel.exposeLiveDataFromServer() .observe(viewLifecycleOwner, Observer {
+            val mGet = mViewModel.getSeedFromMonth(mActualMonth,it)
+            mAdapter.updateListSeed(mGet)
         })
     }
 

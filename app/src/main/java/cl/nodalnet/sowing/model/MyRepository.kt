@@ -19,6 +19,7 @@ class MyRepository (private val mMasterDAO: MasterDAO){
     private val service = RetrofitClient.getRetrofitClient()
 
     val mLiveData = mMasterDAO.getAllData()
+    val mDataSowingItem = mutableListOf<SowingItem>()
 
     //La vieja confiable XD
     fun getDataFromServer() {
@@ -52,7 +53,24 @@ class MyRepository (private val mMasterDAO: MasterDAO){
         return mMasterDAO.getOneSeed(mName)
     }
 
-    fun getSeedForMonth(mMonth:String) : LiveData<List<SowingItem>>{
-       return mMasterDAO.getSeedForMonth(mMonth)
+    fun getSeedFromMonth(mMonth:String, mSowing:List<SowingItem>) : List<SowingItem>{
+        for(data in mSowing){
+            if (mMonth=="ene" && data.ene=="1") mDataSowingItem.add(data)
+            if (mMonth=="feb" && data.feb=="1") mDataSowingItem.add(data)
+            if (mMonth=="mar" && data.mar=="1") mDataSowingItem.add(data)
+            if (mMonth=="abr" && data.abr=="1") mDataSowingItem.add(data)
+            if (mMonth=="may" && data.may=="1") mDataSowingItem.add(data)
+            if (mMonth=="jun" && data.jun=="1") mDataSowingItem.add(data)
+            if (mMonth=="jul" && data.jul=="1") mDataSowingItem.add(data)
+            if (mMonth=="ago" && data.ago=="1") mDataSowingItem.add(data)
+            if (mMonth=="sep" && data.sep=="1") mDataSowingItem.add(data)
+            if (mMonth=="oct" && data.oct=="1") mDataSowingItem.add(data)
+            if (mMonth=="nov" && data.nov=="1") mDataSowingItem.add(data)
+            if (mMonth=="dic" && data.dic=="1") mDataSowingItem.add(data)
+
+        }
+        Log.d("Arroz listado ", mDataSowingItem.toString())
+        return mDataSowingItem
+
     }
 }
