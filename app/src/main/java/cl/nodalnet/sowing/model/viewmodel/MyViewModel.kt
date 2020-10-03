@@ -30,4 +30,9 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
         return mMyRepository.getOneSeed(mName)
     }
 
+    fun getSeedForMonth(mMonth:String) : LiveData<SowingItem>{
+        return mMyRepository.getOneSeed(mMonth)
+    }
+
+
 }

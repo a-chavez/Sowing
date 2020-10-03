@@ -10,8 +10,13 @@
     <string name="second_fragment_label">Detail Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="hello">Hello</string>
-    <string name="john">John</string>
-
+    <string name="hello">Hola</string>
+    <string name="john">Octubre!</string>
+    <string name="txt1">En este mes se puede:\n
+        Cortar el pasto una vez a la semana.\n
+        Hacer almácigos y cubrirlos para que el sol no los deteriore.\n
+        Proteger las plantas herbáceas de los caracoles y babosas.\n
+        Aplicar abonos foliares en algunos cubresuelos.\n
+        Cortar flores marchitas de las plantas de bulbo.</string>
 
 </resources>

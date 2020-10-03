@@ -7,40 +7,48 @@
 
 
     <ImageView
-        android:id="@+id/backHome"
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="2dp"
-        android:background="@drawable/back"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvSeedNameItem"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/amita"
-        android:text="ejemplo"
-        android:textAlignment="center"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/backHome"
-        app:layout_constraintEnd_toEndOf="@+id/backHome"
-        app:layout_constraintStart_toEndOf="@+id/imageSeedHome"
-        app:layout_constraintTop_toTopOf="@+id/backHome" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_stroke" />
 
     <ImageView
         android:id="@+id/imageSeedHome"
-        android:layout_width="75dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:alpha="0.75"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/backHome"
-        app:layout_constraintStart_toStartOf="@+id/backHome"
-        app:layout_constraintTop_toTopOf="@+id/backHome"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.1"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvSeedNameItem"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back"
+        android:fontFamily="@font/amita"
+        android:text="ejemplo"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSeedHome"
+        app:layout_constraintStart_toStartOf="@+id/imageSeedHome"
+        app:layout_constraintTop_toTopOf="@+id/imageSeedHome" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

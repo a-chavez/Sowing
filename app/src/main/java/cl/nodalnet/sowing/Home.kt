@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cl.nodalnet.sowing.model.viewmodel.MyAdapter
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class Home : Fragment(), MyAdapter.SeedNameTxt  {
@@ -41,8 +42,12 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(context)
 
+        Glide.with(this)
+            .load("https://www.gardentech.com/-/media/images/gardentech-na/us/blog/starting-seeds-right-in-your-garden/starting_seeds_right_in_your_garden_header.jpg")
+            .into(imgTitleHome)
         mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {
             Log.d("Arroz", it.toString())
+
             mAdapter.updateListSeed(it)
         })
     }

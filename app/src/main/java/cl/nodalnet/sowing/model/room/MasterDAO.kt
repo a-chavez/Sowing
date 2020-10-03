@@ -8,7 +8,7 @@ import androidx.room.Query
 
 @Dao
 interface MasterDAO {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)  //todo probar con nuevo item
     suspend fun insertAllData(mSowingListDB: List<SowingItem>)
 
     @Query("SELECT * FROM master_table")
@@ -16,4 +16,7 @@ interface MasterDAO {
 
     @Query("SELECT * FROM master_table WHERE name=:mName")
     fun getOneSeed(mName: String): LiveData<SowingItem>
+
+    @Query("SELECT * FROM master_table WHERE :mMonth=1")
+    fun getSeedForMonth(mMonth: String): LiveData<SowingItem>
 }
