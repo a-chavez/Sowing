@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cl.nodalnet.sowing.model.viewmodel.MyAdapter
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
@@ -26,7 +29,6 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
         super.onCreate(savedInstanceState)
 
         mViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
-
 
     }
 
@@ -49,8 +51,9 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        Glide.with(this)
+        Glide.with(imgTitleHome.context)
             .load("https://www.gardentech.com/-/media/images/gardentech-na/us/blog/starting-seeds-right-in-your-garden/starting_seeds_right_in_your_garden_header.jpg")
+            .transform(CenterCrop(),RoundedCorners(25))
             .into(imgTitleHome)
         tvMonthHome.setText(mFullMonth)
 
