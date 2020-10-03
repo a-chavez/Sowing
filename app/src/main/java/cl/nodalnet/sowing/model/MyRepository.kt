@@ -52,7 +52,7 @@ class MyRepository (private val mMasterDAO: MasterDAO){
         return mMasterDAO.getOneSeed(mName)
     }
 
-    fun getSeedForMonth(mMonth:String) : LiveData<SowingItem>{
+    fun getSeedForMonth(mMonth:String) : LiveData<List<SowingItem>>{
        return mMasterDAO.getSeedForMonth(mMonth)
     }
 }

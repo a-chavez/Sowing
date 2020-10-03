@@ -17,6 +17,6 @@ interface MasterDAO {
     @Query("SELECT * FROM master_table WHERE name=:mName")
     fun getOneSeed(mName: String): LiveData<SowingItem>
 
-    @Query("SELECT * FROM master_table WHERE :mMonth=1")
-    fun getSeedForMonth(mMonth: String): LiveData<SowingItem>
+    @Query("SELECT * FROM master_table WHERE :mMonth='1'")
+    fun getSeedForMonth(mMonth: String): LiveData<List<SowingItem>>
 }

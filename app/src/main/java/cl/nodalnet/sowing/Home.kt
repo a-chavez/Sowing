@@ -2,10 +2,10 @@ package cl.nodalnet.sowing
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -14,20 +14,24 @@ import cl.nodalnet.sowing.model.viewmodel.MyAdapter
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.*
+
 
 class Home : Fragment(), MyAdapter.SeedNameTxt  {
 
     lateinit var mViewModel:MyViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         mViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
 
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -38,6 +42,7 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
 
         val mRecyclerView = recyclerView2
         val mAdapter = MyAdapter(this)
+        val mFullMonth = mViewModel.getCurrentMonth()[1]
 
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -45,6 +50,8 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
         Glide.with(this)
             .load("https://www.gardentech.com/-/media/images/gardentech-na/us/blog/starting-seeds-right-in-your-garden/starting_seeds_right_in_your_garden_header.jpg")
             .into(imgTitleHome)
+        tvMonthHome.setText(mFullMonth)
+
         mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {
             Log.d("Arroz", it.toString())
 
@@ -55,7 +62,7 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
     override fun passData(mSeedNameTxt: String) {
             val mBundle = Bundle()
             mBundle.putString("seedName", mSeedNameTxt)
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,mBundle)
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, mBundle)
     }
 
 
