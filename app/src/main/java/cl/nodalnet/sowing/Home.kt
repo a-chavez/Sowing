@@ -1,5 +1,6 @@
 package cl.nodalnet.sowing
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,10 @@ import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.menuarroz.*
 
 
 class Home : Fragment() {
@@ -38,6 +42,14 @@ class Home : Fragment() {
         val mFullMonth:String = mViewModel.getCurrentMonth()[1]
         val mActualMonth:String = mViewModel.getCurrentMonth()[0]
         val mBundle = Bundle()
+        val mMeow: MeowBottomNavigation = meowArrozBottom
+
+        mMeow.add(MeowBottomNavigation.Model(1,R.drawable.ic_home))
+        mMeow.add(MeowBottomNavigation.Model(2,R.drawable.ic_calendar))
+        mMeow.add(MeowBottomNavigation.Model(3,R.drawable.ic_rrss))
+        mMeow.add(MeowBottomNavigation.Model(4,R.drawable.ic_setting))
+
+        mMeow.show(1)
 
         Glide.with(imgTitleHome.context)
             .load("https://www.gardentech.com/-/media/images/gardentech-na/us/blog/starting-seeds-right-in-your-garden/starting_seeds_right_in_your_garden_header.jpg")
