@@ -20,10 +20,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
 
-class Home : Fragment(), MyAdapter.SeedNameTxt  {
+class Home : Fragment() {
 
     lateinit var mViewModel:MyViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,31 +42,23 @@ class Home : Fragment(), MyAdapter.SeedNameTxt  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mRecyclerView = recyclerView2
-        val mAdapter = MyAdapter(this)
         val mFullMonth:String = mViewModel.getCurrentMonth()[1]
-        var mActualMonth:String = mViewModel.getCurrentMonth()[0]
-
-        mRecyclerView.adapter = mAdapter
-        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        val mActualMonth:String = mViewModel.getCurrentMonth()[0]
+        val mBundle = Bundle()
 
         Glide.with(imgTitleHome.context)
             .load("https://www.gardentech.com/-/media/images/gardentech-na/us/blog/starting-seeds-right-in-your-garden/starting_seeds_right_in_your_garden_header.jpg")
-            .transform(CenterCrop(),RoundedCorners(25))
+            .transform(CenterCrop(),RoundedCorners(50))
             .into(imgTitleHome)
         tvMonthHome.setText(mFullMonth)
 
-        mViewModel.exposeLiveDataFromServer() .observe(viewLifecycleOwner, Observer {
-            val mGet = mViewModel.getSeedFromMonth(mActualMonth,it)
-            mAdapter.updateListSeed(mGet)
-        })
+        layoutCalendar.setOnClickListener{
+            mBundle.putString("month",mActualMonth)
+            Log.d("Arroz mes",mActualMonth)
+        }
+
     }
 
-    override fun passData(mSeedNameTxt: String) {
-            val mBundle = Bundle()
-            mBundle.putString("seedName", mSeedNameTxt)
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, mBundle)
-    }
 
 
 }
