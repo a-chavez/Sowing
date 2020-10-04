@@ -67,9 +67,7 @@ class MyRepository (private val mMasterDAO: MasterDAO){
             if (mMonth=="oct" && data.oct=="1") mDataSowingItem.add(data)
             if (mMonth=="nov" && data.nov=="1") mDataSowingItem.add(data)
             if (mMonth=="dic" && data.dic=="1") mDataSowingItem.add(data)
-
         }
-        Log.d("Arroz listado ", mDataSowingItem.toString())
         return mDataSowingItem
 
     }

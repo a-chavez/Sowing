@@ -3,7 +3,7 @@ buildscript {
     ext.kotlin_version = "1.4.10"
     repositories {
         google()
-        jcenter()
+        jcenter()  //For botton bar too
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"

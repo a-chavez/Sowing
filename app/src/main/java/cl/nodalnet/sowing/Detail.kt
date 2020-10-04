@@ -15,14 +15,16 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 
 class Detail : Fragment() {
 
-    var mSeedNameTxt: String? =null
     lateinit var mViewModel: MyViewModel
+    var mSeedNameTxt: String? =null
+    var mMonth: String? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
         arguments?.let {
             mSeedNameTxt = it.getString("seedName","")
+            mMonth = it.getString("month","")
         }
 
     }
@@ -44,7 +46,9 @@ class Detail : Fragment() {
             })
         }
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            val mBundle = Bundle()
+            mBundle.putString("month", mMonth)
+            findNavController().navigate(R.id.action_SecondFragment_to_monthFragment,mBundle)
         }
     }
 }

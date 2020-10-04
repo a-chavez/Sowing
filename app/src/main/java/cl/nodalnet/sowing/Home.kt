@@ -1,23 +1,17 @@
 package cl.nodalnet.sowing
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import cl.nodalnet.sowing.model.viewmodel.MyAdapter
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.*
 
 
 class Home : Fragment() {
@@ -28,7 +22,6 @@ class Home : Fragment() {
         super.onCreate(savedInstanceState)
 
         mViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
-
     }
 
     override fun onCreateView(
@@ -52,11 +45,17 @@ class Home : Fragment() {
             .into(imgTitleHome)
         tvMonthHome.setText(mFullMonth)
 
-        layoutCalendar.setOnClickListener{
+        layoutActual.setOnClickListener{
             mBundle.putString("month",mActualMonth)
-            Log.d("Arroz mes",mActualMonth)
+            mBundle.putString("title",mFullMonth)
+            findNavController().navigate(R.id.action_FirstFragment_to_monthFragment,mBundle)
         }
 
+        layoutCalendar.setOnClickListener{
+            mBundle.putString("month","all")
+            mBundle.putString("title","Listado Completo")
+            findNavController().navigate(R.id.action_FirstFragment_to_monthFragment,mBundle)
+        }
     }
 
 

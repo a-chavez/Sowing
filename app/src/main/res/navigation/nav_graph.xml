@@ -12,9 +12,6 @@
         tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_monthFragment"
             app:destination="@id/monthFragment" />
     </fragment>
@@ -23,10 +20,9 @@
         android:name="cl.nodalnet.sowing.Detail"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_detail">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_monthFragment"
+            app:destination="@id/monthFragment" />
     </fragment>
     <fragment
         android:id="@+id/monthFragment"
@@ -36,5 +32,8 @@
         <action
             android:id="@+id/action_monthFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_monthFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
