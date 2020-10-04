@@ -20,7 +20,6 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
     val mAllMaster : LiveData<List<SowingItem>>
 
 
-
     init {
         val mMasterDAO = SowingDB.getDataBase(application).getMasterDAO()
 
@@ -36,6 +35,10 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
 
     fun getOneSeed(mName:String) : LiveData<SowingItem>{
         return mMyRepository.getOneSeed(mName)
+    }
+
+    fun getSeedFromMonth(mMonth:String, mSowing:List<SowingItem>) : List<SowingItem>{
+        return mMyRepository.getSeedFromMonth(mMonth,mSowing)
     }
 
     fun getCurrentMonth(): Array<String> {
@@ -71,8 +74,27 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
         return arrayOf(mMonth,fullMonth)
     }
 
-    fun getSeedFromMonth(mMonth:String, mSowing:List<SowingItem>) : List<SowingItem>{
-        return mMyRepository.getSeedFromMonth(mMonth,mSowing)
+    fun getTitleImgFromMonth(mMonth: String): String{
+        var imgUrl:String=""
+        when(mMonth){
+            "ene" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/summer2.png"
+            "feb" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/summer3.png"
+            "mar" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/fall1.png"
+            "abr" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/fall2.png"
+            "may" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/fall3.png"
+            "jun" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/winter1.png"
+            "jul" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/winter2.png"
+            "ago" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/winter3.png"
+            "sep" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/spring1.png"
+            "oct" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/spring2.png"
+            "nov" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/spring3.png"
+            "dic" -> imgUrl = "https://www.nodalnet.cl/appsowing/images/summer1.png"
+            else -> imgUrl= "https://www.nodalnet.cl/appsowing/images/default.png"
+
+        }
+        return imgUrl
     }
+
+
 
 }

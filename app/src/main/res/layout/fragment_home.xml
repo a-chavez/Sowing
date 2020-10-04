@@ -59,15 +59,16 @@
         android:id="@+id/layoutActual"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/block_solid"
         android:backgroundTint="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline">
+        app:layout_constraintBottom_toTopOf="@+id/layoutIdea"
+        app:layout_constraintEnd_toStartOf="@+id/layoutCalendar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeader">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:id="@+id/imgMonthPlant"
@@ -97,15 +98,16 @@
         android:id="@+id/layoutCalendar"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/block_solid"
         android:backgroundTint="@color/colorAccent"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline">
+        app:layout_constraintBottom_toTopOf="@+id/layoutConfig"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layoutActual"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeader">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:layout_width="100dp"
@@ -128,15 +130,16 @@
         android:id="@+id/layoutIdea"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/block_solid"
         android:backgroundTint="@color/colorblock4"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline2">
+        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintEnd_toStartOf="@+id/layoutConfig"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutActual">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:layout_width="100dp"
@@ -159,15 +162,16 @@
         android:id="@+id/layoutConfig"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/block_solid"
         android:backgroundTint="@color/colorTrendingStart"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline2">
+        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layoutIdea"
+        app:layout_constraintTop_toBottomOf="@+id/layoutCalendar">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:layout_width="100dp"
@@ -184,31 +188,15 @@
             android:textColor="@color/colorLight"
             android:textSize="18sp"
             android:textStyle="bold" />
+
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="207dp"
-        android:layout_marginEnd="204dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.50364965"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
     <include
+        android:id="@+id/include"
         layout="@layout/menuarroz"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

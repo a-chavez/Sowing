@@ -14,8 +14,13 @@ import androidx.recyclerview.widget.SortedList
 import cl.nodalnet.sowing.model.room.SowingItem
 import cl.nodalnet.sowing.model.viewmodel.MyAdapter
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_month.*
+import kotlinx.android.synthetic.main.menuarroz.*
 
 class MonthFragment : Fragment(), MyAdapter.SeedNameTxt {
     lateinit var mViewModel: MyViewModel
@@ -28,9 +33,9 @@ class MonthFragment : Fragment(), MyAdapter.SeedNameTxt {
         arguments?.let {
             mMonth =it.getString("month","")
             mTitle =it.getString("title","")
-            Log.d("Arroz mes",mMonth.toString())
-            Log.d("Arroz titulo",mTitle.toString())
+
         }
+
     }
 
     override fun onCreateView(
@@ -46,9 +51,22 @@ class MonthFragment : Fragment(), MyAdapter.SeedNameTxt {
         val mRecyclerView = recyclerView2
         val mAdapter = MyAdapter(this)
         var mGet:List<SowingItem> = emptyList()
+        val mUrlImg = mViewModel.getTitleImgFromMonth(mMonth.toString())
+        val mMeow: MeowBottomNavigation = meowArrozBottom
+
+        mMeow.add(MeowBottomNavigation.Model(1,R.drawable.ic_home))
+        mMeow.add(MeowBottomNavigation.Model(2,R.drawable.ic_calendar))
+        mMeow.add(MeowBottomNavigation.Model(3,R.drawable.ic_rrss))
+        mMeow.add(MeowBottomNavigation.Model(4,R.drawable.ic_setting))
 
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        Glide.with(this)
+            .load(mUrlImg)
+            .transform(CenterCrop(), RoundedCorners(30))
+            .into(imgTitleMonth)
+        tvTitleMonth.setText(mTitle)
 
         mViewModel.exposeLiveDataFromServer() .observe(viewLifecycleOwner, Observer {
             if (mMonth=="all") {
