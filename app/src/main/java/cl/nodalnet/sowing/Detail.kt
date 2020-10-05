@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import com.bumptech.glide.Glide
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import kotlinx.android.synthetic.main.fragment_detail.*
+import kotlinx.android.synthetic.main.menuarroz.*
 
 class Detail : Fragment() {
 
@@ -27,9 +29,7 @@ class Detail : Fragment() {
             mSeedNameTxt = it.getString("seedName","")
             mMonth = it.getString("month","")
             mTitle = it.getString("title","")
-
         }
-
     }
 
     override fun onCreateView(
@@ -42,17 +42,40 @@ class Detail : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mMeow: MeowBottomNavigation = meowArrozBottom
+
+        mMeow.add(MeowBottomNavigation.Model(1,R.drawable.ic_home))
+        mMeow.add(MeowBottomNavigation.Model(2,R.drawable.ic_calendar))
+        mMeow.add(MeowBottomNavigation.Model(3,R.drawable.ic_rrss))
+        mMeow.add(MeowBottomNavigation.Model(4,R.drawable.ic_setting))
+
+        mMeow.setOnClickMenuListener {
+            val name = when (it.id) {
+                1 -> findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment2)
+                2 -> findNavController().navigate(R.id.action_SecondFragment_to_calendarFragment)
+                3 -> ""
+                4 -> ""
+                else ->""
+            }
+        }
         mSeedNameTxt?.let {
             mViewModel.getOneSeed(it).observe(viewLifecycleOwner, Observer {
                 tvSeedName.setText(it.name.capitalize())
                 Glide.with(this).load(it.urlImage).into(imgDetail)
+
+                tvTemp.setText(it.temp.toString())
+                tvSun.setText(it.sun.toString().capitalize())
+                tvWather.setText(it.wather.toString().capitalize())
+                tvWeather.setText(it.weather.toString().capitalize())
+                tvSubstratum.setText(it.substratum.toString().capitalize())
+                tvDepth.setText(it.depth.toString().capitalize())
+                tvFertilizer.setText(it.fertilizer.toString().capitalize())
+                tvDistance.setText(it.distance.toString().capitalize())
+                tvPot.setText(it.pot.toString().capitalize())
+                tvFriends.setText(it.friends.toString().capitalize())
+                tvNonFriends.setText(it.nonfriends.toString().capitalize())
+                tvDiseases.setText(it.diseases.toString().capitalize())
             })
-        }
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
-            val mBundle = Bundle()
-            mBundle.putString("month", mMonth)
-            mBundle.putString("title",mTitle)
-            findNavController().navigate(R.id.action_SecondFragment_to_monthFragment,mBundle)
         }
     }
 }
