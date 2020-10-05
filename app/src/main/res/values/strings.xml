@@ -24,5 +24,6 @@
     <string name="homeCalendarSearch">Buscar por mes</string>
     <string name="homeTips">Ideas y consejos</string>
     <string name="homeConfig">Configura la app</string>
+    <string name="calendar_title">Calendario</string>
 
 </resources>

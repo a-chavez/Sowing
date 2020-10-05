@@ -51,6 +51,17 @@ class Home : Fragment() {
 
         mMeow.show(1)
 
+        mMeow.setOnClickMenuListener {
+            val name = when (it.id) {
+                1 -> ""
+                2 -> findNavController().navigate(R.id.action_FirstFragment_to_calendarFragment)
+                3 -> ""
+                4 -> ""
+                else ->""
+            }
+
+        }
+
         Glide.with(imgTitleHome.context)
             .load("https://www.gardentech.com/-/media/images/gardentech-na/us/blog/starting-seeds-right-in-your-garden/starting_seeds_right_in_your_garden_header.jpg")
             .transform(CenterCrop(),RoundedCorners(50))
@@ -64,9 +75,8 @@ class Home : Fragment() {
         }
 
         layoutCalendar.setOnClickListener{
-            mBundle.putString("month","all")
-            mBundle.putString("title","Listado Completo")
-            findNavController().navigate(R.id.action_FirstFragment_to_monthFragment,mBundle)
+            mBundle.putString("month",mActualMonth)
+            findNavController().navigate(R.id.action_FirstFragment_to_calendarFragment,mBundle)
         }
     }
 

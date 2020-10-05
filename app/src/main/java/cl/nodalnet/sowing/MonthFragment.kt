@@ -33,7 +33,6 @@ class MonthFragment : Fragment(), MyAdapter.SeedNameTxt {
         arguments?.let {
             mMonth =it.getString("month","")
             mTitle =it.getString("title","")
-
         }
 
     }
@@ -59,6 +58,17 @@ class MonthFragment : Fragment(), MyAdapter.SeedNameTxt {
         mMeow.add(MeowBottomNavigation.Model(3,R.drawable.ic_rrss))
         mMeow.add(MeowBottomNavigation.Model(4,R.drawable.ic_setting))
 
+        mMeow.setOnClickMenuListener {
+            val name = when (it.id) {
+                1 -> findNavController().navigate(R.id.action_monthFragment_to_FirstFragment)
+                2 -> findNavController().navigate(R.id.action_monthFragment_to_calendarFragment)
+                3 -> ""
+                4 -> ""
+                else ->""
+            }
+
+        }
+
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -77,13 +87,16 @@ class MonthFragment : Fragment(), MyAdapter.SeedNameTxt {
             mAdapter.updateListSeed(mGet)
             Log.d("Arroz ListSize",mGet.size.toString())
         })
+
     }
+
 
 
     override fun passData(mSeedNameTxt: String) {
         val mBundle = Bundle()
         mBundle.putString("seedName", mSeedNameTxt)
         mBundle.putString("month",mMonth)
+        mBundle.putString("title",mTitle)
        findNavController().navigate(R.id.action_monthFragment_to_SecondFragment, mBundle)
     }
 

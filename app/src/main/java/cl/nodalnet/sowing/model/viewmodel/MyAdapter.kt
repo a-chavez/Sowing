@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import cl.nodalnet.sowing.R
 import cl.nodalnet.sowing.model.room.SowingItem
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.item_seed.view.*
 
 class MyAdapter (var mSeedNameTxt: SeedNameTxt): RecyclerView.Adapter<MyAdapter.mViewHolder>() {
@@ -38,7 +40,7 @@ class MyAdapter (var mSeedNameTxt: SeedNameTxt): RecyclerView.Adapter<MyAdapter.
         val mSowingItem: SowingItem = dataList[position]
 
         holder.mSeedName.text = mSowingItem.name.capitalize()
-        Glide.with(holder.itemView.context).load(mSowingItem.urlImage).into(holder.mSeedUrli)
+        Glide.with(holder.itemView.context).load(mSowingItem.urlImage).transform(CenterCrop(), RoundedCorners(20)).into(holder.mSeedUrli)
     }
 
     override fun getItemCount() = dataList.size

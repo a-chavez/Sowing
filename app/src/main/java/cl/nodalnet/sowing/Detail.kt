@@ -18,6 +18,7 @@ class Detail : Fragment() {
     lateinit var mViewModel: MyViewModel
     var mSeedNameTxt: String? =null
     var mMonth: String? =null
+    var mTitle: String? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,8 @@ class Detail : Fragment() {
         arguments?.let {
             mSeedNameTxt = it.getString("seedName","")
             mMonth = it.getString("month","")
+            mTitle = it.getString("title","")
+
         }
 
     }
@@ -48,6 +51,7 @@ class Detail : Fragment() {
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             val mBundle = Bundle()
             mBundle.putString("month", mMonth)
+            mBundle.putString("title",mTitle)
             findNavController().navigate(R.id.action_SecondFragment_to_monthFragment,mBundle)
         }
     }
