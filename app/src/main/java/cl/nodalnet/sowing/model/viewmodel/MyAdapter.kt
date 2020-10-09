@@ -40,7 +40,10 @@ class MyAdapter (var mSeedNameTxt: SeedNameTxt): RecyclerView.Adapter<MyAdapter.
         val mSowingItem: SowingItem = dataList[position]
 
         holder.mSeedName.text = mSowingItem.name.capitalize()
-        Glide.with(holder.itemView.context).load(mSowingItem.urlImage).transform(CenterCrop(), RoundedCorners(20)).into(holder.mSeedUrli)
+        Glide.with(holder.itemView.context)
+            .load(mSowingItem.urlImage)
+            .transform(CenterCrop(), RoundedCorners(40))
+            .into(holder.mSeedUrli)
     }
 
     override fun getItemCount() = dataList.size

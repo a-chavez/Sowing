@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
+import kotlinx.android.synthetic.main.block_sup_inter.*
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import kotlinx.android.synthetic.main.fragment_month.*
 import kotlinx.android.synthetic.main.menuarroz.*
@@ -62,8 +63,8 @@ class CalendarFragment : Fragment() {
         }
         Glide.with(this)
             .load(mUrlImg)
-            .transform(CenterCrop(), RoundedCorners(30))
-            .into(imgTitleCalendar)
+            .transform(CenterCrop(), RoundedCorners(80))
+            .into(imgBackgroundSupInter)
 
         tvAll.setOnClickListener{
             mMonth = "all"

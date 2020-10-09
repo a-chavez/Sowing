@@ -4,62 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@color/colorGreenDark"
     tools:context=".CalendarFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutHeaderCalendar"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:background="@drawable/header_background"
-        android:paddingBottom="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/layouTitleinter" />
 
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/block_02"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintStart_toStartOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
-        <ImageView
-            android:id="@+id/imgTitleCalendar"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:padding="5dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/block_01"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/layouTitleCalendar"
+        app:tint="@color/colorGreenDark" />
 
-        <TextView
-            android:id="@+id/tvTitleCalendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/back"
-            android:fontFamily="@font/amita"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="@string/calendar_title"
-            android:textColor="@color/colorLight"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/layouTitleCalendar"
+        layout="@layout/block_sup_inter" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tvAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/back_stroke"
-        android:padding="4dp"
+        android:fontFamily="@font/amita"
+        android:paddingStart="8sp"
+        android:paddingEnd="8sp"
         android:text="Listar Todo"
         android:textColor="@color/colorLight"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutHeaderCalendar" />
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/layouTitleCalendar" />
 
     <include
         android:id="@+id/include"
@@ -77,13 +72,14 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/back_stroke"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/tvAll">
 
         <TextView
             android:id="@+id/tvEne"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -98,6 +94,7 @@
             android:id="@+id/tvFeb"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -112,6 +109,7 @@
             android:id="@+id/tvMar"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -126,6 +124,7 @@
             android:id="@+id/tvAbr"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -140,6 +139,7 @@
             android:id="@+id/tvMay"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -154,6 +154,7 @@
             android:id="@+id/tvJun"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -168,6 +169,7 @@
             android:id="@+id/tvJul"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -182,6 +184,7 @@
             android:id="@+id/tvAgo"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -196,6 +199,7 @@
             android:id="@+id/tvSep"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -210,6 +214,7 @@
             android:id="@+id/tvOct"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -224,6 +229,7 @@
             android:id="@+id/tvNov"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"
@@ -238,6 +244,7 @@
             android:id="@+id/tvDic"
             android:layout_width="90dp"
             android:layout_height="80dp"
+            android:fontFamily="@font/amita"
             android:gravity="center"
             android:shadowColor="@color/colorGray"
             android:shadowRadius="12"

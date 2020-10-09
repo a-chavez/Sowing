@@ -4,60 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCF8DC"
+    android:background="@color/colorGreenDark"
     tools:context=".Home">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutHeader"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:background="@drawable/header_background"
-        android:paddingBottom="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <ImageView
+        android:id="@+id/img6"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imgTitleHome"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:padding="5dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+    <include layout="@layout/block_superior"
+        android:id="@+id/layoutSup" />
 
-        <TextView
-            android:id="@+id/textHello"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/hello"
-            android:textColor="@color/colorLight"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvMonthHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/john"
-            android:textColor="@color/colorLight"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/textHello"
-            app:layout_constraintTop_toTopOf="@+id/imgTitleHome" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/block_03"
+        app:layout_constraintBottom_toBottomOf="@+id/img6"
+        app:layout_constraintStart_toStartOf="@+id/img6"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSup" />
 
     <LinearLayout
         android:id="@+id/layoutActual"
-        android:layout_width="140dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/block_solid"
         android:backgroundTint="@color/colorPrimary"
@@ -66,14 +39,13 @@
         android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/layoutIdea"
         app:layout_constraintEnd_toStartOf="@+id/layoutCalendar"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutHeader">
+        app:layout_constraintStart_toEndOf="@+id/img6"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSup">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:id="@+id/imgMonthPlant"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:contentDescription="@string/app_name"
             android:padding="2dp"
             android:src="@drawable/plants" />
@@ -84,7 +56,7 @@
             android:gravity="center"
             android:text="@string/homeThisMonth"
             android:textColor="@color/colorLight"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -96,7 +68,7 @@
 
     <LinearLayout
         android:id="@+id/layoutCalendar"
-        android:layout_width="140dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/block_solid"
         android:backgroundTint="@color/colorAccent"
@@ -107,11 +79,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/layoutActual"
-        app:layout_constraintTop_toBottomOf="@+id/layoutHeader">
+        app:layout_constraintTop_toBottomOf="@+id/layoutSup">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:contentDescription="@string/app_name"
             android:padding="2dp"
             android:src="@drawable/calendar" />
@@ -122,28 +94,29 @@
             android:gravity="center"
             android:text="@string/homeCalendarSearch"
             android:textColor="@color/colorLight"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layoutIdea"
-        android:layout_width="140dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/block_solid"
         android:backgroundTint="@color/colorblock4"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintBottom_toBottomOf="@+id/include"
         app:layout_constraintEnd_toStartOf="@+id/layoutConfig"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img6"
         app:layout_constraintTop_toBottomOf="@+id/layoutActual">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:contentDescription="@string/app_name"
             android:padding="2dp"
             android:src="@drawable/idea" />
@@ -154,28 +127,29 @@
             android:gravity="center"
             android:text="@string/homeTips"
             android:textColor="@color/colorLight"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layoutConfig"
-        android:layout_width="140dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/block_solid"
         android:backgroundTint="@color/colorTrendingStart"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/layoutIdea"
         app:layout_constraintTop_toBottomOf="@+id/layoutCalendar">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:contentDescription="@string/app_name"
             android:padding="2dp"
             android:src="@drawable/config" />
@@ -186,7 +160,7 @@
             android:gravity="center"
             android:text="@string/homeConfig"
             android:textColor="@color/colorLight"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>

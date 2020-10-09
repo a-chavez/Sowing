@@ -1,6 +1,4 @@
 package cl.nodalnet.sowing
-
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +11,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.block_superior.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.menuarroz.*
-
 
 class Home : Fragment() {
 
@@ -24,8 +21,8 @@ class Home : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         mViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+
     }
 
     override fun onCreateView(
@@ -62,11 +59,12 @@ class Home : Fragment() {
 
         }
 
-        Glide.with(imgTitleHome.context)
+        Glide.with(imgBackgroundSup.context)
             .load("https://www.gardentech.com/-/media/images/gardentech-na/us/blog/starting-seeds-right-in-your-garden/starting_seeds_right_in_your_garden_header.jpg")
-            .transform(CenterCrop(),RoundedCorners(50))
-            .into(imgTitleHome)
-        tvMonthHome.setText(mFullMonth)
+            .transform(CenterCrop(),RoundedCorners(100))
+            .into(imgBackgroundSup)
+
+        //tvMonthHome.setText(mFullMonth)
 
         layoutActual.setOnClickListener{
             mBundle.putString("month",mActualMonth)

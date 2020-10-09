@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/imgDetail"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,12 +34,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/back"
+        android:backgroundTint="@color/colorGreenDark"
         android:fontFamily="@font/amita"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="Semilla"
         android:textAlignment="viewStart"
-        android:textColor="#FDFCFB"
+        android:textColor="@color/colorCream"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imgDetail"
@@ -49,12 +50,13 @@
         android:id="@+id/imgBarDetail"
         android:layout_width="380dp"
         android:layout_height="75dp"
-        android:layout_marginTop="170dp"
-        android:src="@drawable/back_stroke"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/back_stroke2"
         app:layout_constraintEnd_toEndOf="@+id/imgDetail"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="@+id/imgDetail"
-        app:layout_constraintTop_toTopOf="@+id/imgDetail" />
+        app:layout_constraintTop_toTopOf="@+id/imgDetail"
+         />
 
     <TextView
         android:id="@+id/tvTitleTemp"
@@ -64,6 +66,7 @@
         android:layout_marginTop="8dp"
         android:text="Temperatura"
         android:textStyle="bold"
+        android:textColor="@color/colorCream"
         app:layout_constraintEnd_toEndOf="@+id/tvTemp"
         app:layout_constraintStart_toStartOf="@+id/tvTemp"
         app:layout_constraintTop_toTopOf="@+id/imgBarDetail" />
@@ -75,6 +78,7 @@
         android:layout_marginTop="8dp"
         android:text="Tipo Sol"
         android:textStyle="bold"
+        android:textColor="@color/colorCream"
         app:layout_constraintEnd_toEndOf="@+id/tvSun"
         app:layout_constraintStart_toStartOf="@+id/tvSun"
         app:layout_constraintTop_toTopOf="@+id/imgBarDetail" />
@@ -86,6 +90,7 @@
         android:layout_marginTop="8dp"
         android:text="Tipo Riego"
         android:textStyle="bold"
+        android:textColor="@color/colorCream"
         app:layout_constraintEnd_toEndOf="@+id/tvWather"
         app:layout_constraintStart_toStartOf="@+id/tvWather"
         app:layout_constraintTop_toTopOf="@+id/imgBarDetail" />
@@ -95,6 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:textColor="@color/colorCream"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/imgBarDetail"
         app:layout_constraintEnd_toStartOf="@+id/tvSun"
@@ -105,6 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:textColor="@color/colorCream"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/imgBarDetail"
         app:layout_constraintEnd_toEndOf="@+id/imgBarDetail"
@@ -115,6 +122,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:textColor="@color/colorCream"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/imgBarDetail"
         app:layout_constraintEnd_toEndOf="@+id/imgBarDetail"
