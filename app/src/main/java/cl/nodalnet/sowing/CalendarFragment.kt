@@ -1,5 +1,7 @@
 package cl.nodalnet.sowing
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionInflater
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -30,6 +33,11 @@ class CalendarFragment : Fragment() {
         arguments?.let {
             mMonth =it.getString("month","")
         }
+
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.down)
+        exitTransition = inflater.inflateTransition(R.transition.top)
+
     }
 
     override fun onCreateView(
@@ -56,7 +64,12 @@ class CalendarFragment : Fragment() {
             val name = when (it.id) {
                 1 -> findNavController().navigate(R.id.action_calendarFragment_to_FirstFragment)
                 2 -> ""
-                3 -> ""
+                3 -> startActivity(
+                    Intent(
+                        Intent.ACTION_SENDTO,
+                        Uri.parse("mailto:antonio@nodalnet.cl?subject=Feedback Sowing!")
+                    )
+                )
                 4 -> ""
                 else ->""
             }

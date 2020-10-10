@@ -1,5 +1,7 @@
 package cl.nodalnet.sowing
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionInflater
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import com.bumptech.glide.Glide
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
@@ -30,6 +33,10 @@ class Detail : Fragment() {
             mMonth = it.getString("month","")
             mTitle = it.getString("title","")
         }
+        //animation
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.down)
+        exitTransition = inflater.inflateTransition(R.transition.top)
     }
 
     override fun onCreateView(
@@ -53,7 +60,12 @@ class Detail : Fragment() {
             val name = when (it.id) {
                 1 -> findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment2)
                 2 -> findNavController().navigate(R.id.action_SecondFragment_to_calendarFragment)
-                3 -> ""
+                3 -> startActivity(
+                    Intent(
+                        Intent.ACTION_SENDTO,
+                        Uri.parse("mailto:antonio@nodalnet.cl?subject=Feedback Sowing!")
+                    )
+                )
                 4 -> ""
                 else ->""
             }
