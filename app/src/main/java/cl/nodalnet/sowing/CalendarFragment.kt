@@ -3,10 +3,11 @@ package cl.nodalnet.sowing
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
@@ -17,7 +18,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import kotlinx.android.synthetic.main.block_sup_inter.*
 import kotlinx.android.synthetic.main.fragment_calendar.*
-import kotlinx.android.synthetic.main.fragment_month.*
 import kotlinx.android.synthetic.main.menuarroz.*
 
 class CalendarFragment : Fragment() {
@@ -31,9 +31,10 @@ class CalendarFragment : Fragment() {
         super.onCreate(savedInstanceState)
         mViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
         arguments?.let {
-            mMonth =it.getString("month","")
+            mMonth =it.getString("month", "")
         }
 
+       
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.down)
         exitTransition = inflater.inflateTransition(R.transition.fade)
@@ -53,10 +54,10 @@ class CalendarFragment : Fragment() {
         val mUrlImg = mViewModel.getTitleImgFromMonth(mMonth.toString())
         val mMeow: MeowBottomNavigation = meowArrozBottom
 
-        mMeow.add(MeowBottomNavigation.Model(1,R.drawable.ic_home))
-        mMeow.add(MeowBottomNavigation.Model(2,R.drawable.ic_calendar))
-        mMeow.add(MeowBottomNavigation.Model(3,R.drawable.ic_rrss))
-        mMeow.add(MeowBottomNavigation.Model(4,R.drawable.ic_setting))
+        mMeow.add(MeowBottomNavigation.Model(1, R.drawable.ic_home))
+        mMeow.add(MeowBottomNavigation.Model(2, R.drawable.ic_calendar))
+        mMeow.add(MeowBottomNavigation.Model(3, R.drawable.ic_rrss))
+        mMeow.add(MeowBottomNavigation.Model(4, R.drawable.ic_setting))
 
         mMeow.show(2)
 
@@ -150,10 +151,10 @@ class CalendarFragment : Fragment() {
 
     }
 
-    fun gotoMonth(mMonth:String, mTitle:String){
-        mBundle.putString("month",mMonth)
-        mBundle.putString("title",mTitle)
-        findNavController().navigate(R.id.action_calendarFragment_to_monthFragment,mBundle)
+    fun gotoMonth(mMonth: String, mTitle: String){
+        mBundle.putString("month", mMonth)
+        mBundle.putString("title", mTitle)
+        findNavController().navigate(R.id.action_calendarFragment_to_monthFragment, mBundle)
     }
 
 

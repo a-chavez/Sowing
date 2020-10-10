@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentManager.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
@@ -42,6 +44,8 @@ class Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        fragmentManager?.popBackStack(null, POP_BACK_STACK_INCLUSIVE);
 
         val mFullMonth:String = mViewModel.getCurrentMonth()[1]
         val mActualMonth:String = mViewModel.getCurrentMonth()[0]

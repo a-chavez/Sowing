@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_tipsFragment"
+            app:destination="@id/tipsFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -59,5 +62,17 @@
         <action
             android:id="@+id/action_calendarFragment_to_monthFragment"
             app:destination="@id/monthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tipsFragment"
+        android:name="cl.nodalnet.sowing.model.TipsFragment"
+        android:label="fragment_tips"
+        tools:layout="@layout/fragment_tips" >
+        <action
+            android:id="@+id/action_tipsFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_tipsFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
 </navigation>

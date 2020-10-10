@@ -37,4 +37,6 @@ data class SowingItem(
     @SerializedName("nonfriends")   val nonfriends: String?,
     @SerializedName("diseases")     val diseases: String?,
     @SerializedName("pot")          val pot: String?,
+    @SerializedName("tips_ene")     val tips_ene: String?,
+
 )
