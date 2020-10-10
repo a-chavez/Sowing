@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/tipsFragment"
-        android:name="cl.nodalnet.sowing.model.TipsFragment"
+        android:name="cl.nodalnet.sowing.TipsFragment"
         android:label="fragment_tips"
         tools:layout="@layout/fragment_tips" >
         <action

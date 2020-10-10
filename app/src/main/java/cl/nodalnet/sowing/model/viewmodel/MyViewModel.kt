@@ -8,6 +8,7 @@ import cl.nodalnet.sowing.model.MyRepository
 import cl.nodalnet.sowing.model.retrofit.SowingList
 import cl.nodalnet.sowing.model.room.SowingDB
 import cl.nodalnet.sowing.model.room.SowingItem
+import cl.nodalnet.sowing.model.room.TipsItem
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.Month
@@ -18,14 +19,18 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
 
     private val mMyRepository : MyRepository
     val mAllMaster : LiveData<List<SowingItem>>
+    val mAllTips : LiveData<List<TipsItem>>
 
 
     init {
         val mMasterDAO = SowingDB.getDataBase(application).getMasterDAO()
+        val mTipsDAO = SowingDB.getDataBase(application).getTipsDAO()
 
-        mMyRepository = MyRepository(mMasterDAO)
+        mMyRepository = MyRepository(mMasterDAO,mTipsDAO)
         mAllMaster = mMyRepository.mLiveData
+        mAllTips = mMyRepository.mLiveDataTips
         mMyRepository.getDataFromServer()
+        mMyRepository.getDataFromApiTips()
     }
 
     fun exposeLiveDataFromServer():LiveData<List<SowingItem>>{
@@ -40,6 +45,7 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
     fun getSeedFromMonth(mMonth:String, mSowing:List<SowingItem>) : List<SowingItem>{
         return mMyRepository.getSeedFromMonth(mMonth,mSowing)
     }
+
 
     fun getCurrentMonth(): Array<String> {
         val currentMonth: Int = Calendar.getInstance().get(Calendar.MONTH)+1
@@ -94,7 +100,4 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
         }
         return imgUrl
     }
-
-
-
-}
+ }

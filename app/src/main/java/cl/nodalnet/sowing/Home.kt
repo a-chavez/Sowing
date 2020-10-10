@@ -92,6 +92,11 @@ class Home : Fragment() {
             mBundle.putString("month", mActualMonth)
             findNavController().navigate(R.id.action_FirstFragment_to_calendarFragment, mBundle)
         }
+        layoutIdea.setOnClickListener{
+            mBundle.putString("month", mActualMonth)
+            mBundle.putString("title", mFullMonth)
+            findNavController().navigate(R.id.action_FirstFragment_to_tipsFragment,mBundle)
+        }
     }
 
 

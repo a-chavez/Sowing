@@ -5,9 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import cl.nodalnet.sowing.model.retrofit.RetrofitClient
 import cl.nodalnet.sowing.model.retrofit.SowingList
-import cl.nodalnet.sowing.model.room.MasterDAO
-import cl.nodalnet.sowing.model.room.MasterDAO_Impl
-import cl.nodalnet.sowing.model.room.SowingItem
+import cl.nodalnet.sowing.model.retrofit.TipsList
+import cl.nodalnet.sowing.model.room.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,11 +14,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyRepository (private val mMasterDAO: MasterDAO){
+class MyRepository (private val mMasterDAO: MasterDAO, private val mTipsDAO: TipsDAO){
     private val service = RetrofitClient.getRetrofitClient()
 
     val mLiveData = mMasterDAO.getAllData()
+    val mLiveDataTips = mTipsDAO.getAllTips()
     val mDataSowingItem = mutableListOf<SowingItem>()
+    val mDataTipsItem = mutableListOf<TipsItem>()
 
     //La vieja confiable XD
     fun getDataFromServer() {
@@ -48,6 +49,39 @@ class MyRepository (private val mMasterDAO: MasterDAO){
 
         })
     }
+
+    fun getDataFromApiTips() {
+        Log.d("Arroz", "getDataFromApiTips")
+        val mCall = service.getDataFormTips()
+        mCall.enqueue(object : Callback<TipsList>{
+            override fun onResponse(call: Call<TipsList>, response: Response<TipsList>) {
+                Log.d("Arroz onResponse", response.code().toString())
+                when(response.code()){
+
+                    in 200..299 -> CoroutineScope(Dispatchers.IO).launch{
+                        response.body()?.let{
+                            Log.d("Arroz desde TipsAPI", it.toString())
+                            mTipsDAO.insertAllTips(it)
+                        }
+
+                    }
+                    in 300..399 -> Log.d("Arroz ERROR 300", response.errorBody().toString())
+                }
+
+            }
+
+            override fun onFailure(call: Call<TipsList>, t: Throwable) {
+                Log.e("Arroz ApiTips", t.message.toString())
+            }
+
+        })
+    }
+
+
+
+
+
+
 
     fun getOneSeed(mName:String) : LiveData<SowingItem>{
         return mMasterDAO.getOneSeed(mName)

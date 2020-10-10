@@ -7,11 +7,12 @@ import androidx.room.RoomDatabase
 
 private const val DATA_BASE_NAME="sowing_db"
 
-@Database(entities = [SowingItem::class],version = 1)
+@Database(entities = [SowingItem::class, TipsItem::class],version = 1)
 
 abstract class SowingDB : RoomDatabase() {
 
     abstract fun getMasterDAO() : MasterDAO
+    abstract fun getTipsDAO() : TipsDAO
 
     companion object {
         @Volatile
