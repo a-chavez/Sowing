@@ -39,7 +39,7 @@ class MonthFragment : Fragment(), MyAdapter.SeedNameTxt {
 
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.down)
-        exitTransition = inflater.inflateTransition(R.transition.top)
+        exitTransition = inflater.inflateTransition(R.transition.fade)
 
     }
 
