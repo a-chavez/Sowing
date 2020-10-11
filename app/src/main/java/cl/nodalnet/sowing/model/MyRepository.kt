@@ -51,16 +51,16 @@ class MyRepository (private val mMasterDAO: MasterDAO, private val mTipsDAO: Tip
     }
 
     fun getDataFromApiTips() {
-        Log.d("Arroz", "getDataFromApiTips")
+        //Log.d("Arroz", "getDataFromApiTips")
         val mCall = service.getDataFormTips()
         mCall.enqueue(object : Callback<TipsList>{
             override fun onResponse(call: Call<TipsList>, response: Response<TipsList>) {
-                Log.d("Arroz onResponse", response.code().toString())
+              //  Log.d("Arroz onResponse", response.code().toString())
                 when(response.code()){
 
                     in 200..299 -> CoroutineScope(Dispatchers.IO).launch{
                         response.body()?.let{
-                            Log.d("Arroz desde TipsAPI", it.toString())
+                        //    Log.d("Arroz desde TipsAPI", it.toString())
                             mTipsDAO.insertAllTips(it)
                         }
 
@@ -76,12 +76,6 @@ class MyRepository (private val mMasterDAO: MasterDAO, private val mTipsDAO: Tip
 
         })
     }
-
-
-
-
-
-
 
     fun getOneSeed(mName:String) : LiveData<SowingItem>{
         return mMasterDAO.getOneSeed(mName)

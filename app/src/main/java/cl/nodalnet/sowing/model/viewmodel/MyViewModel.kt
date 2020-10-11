@@ -1,6 +1,7 @@
 package cl.nodalnet.sowing.model.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +22,6 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
     val mAllMaster : LiveData<List<SowingItem>>
     val mAllTips : LiveData<List<TipsItem>>
 
-
     init {
         val mMasterDAO = SowingDB.getDataBase(application).getMasterDAO()
         val mTipsDAO = SowingDB.getDataBase(application).getTipsDAO()
@@ -34,8 +34,11 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
     }
 
     fun exposeLiveDataFromServer():LiveData<List<SowingItem>>{
-
         return mMyRepository.mLiveData
+    }
+
+    fun exposeLiveDataTips(): LiveData<List<TipsItem>>{
+        return mMyRepository.mLiveDataTips
     }
 
     fun getOneSeed(mName:String) : LiveData<SowingItem>{
@@ -45,7 +48,6 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
     fun getSeedFromMonth(mMonth:String, mSowing:List<SowingItem>) : List<SowingItem>{
         return mMyRepository.getSeedFromMonth(mMonth,mSowing)
     }
-
 
     fun getCurrentMonth(): Array<String> {
         val currentMonth: Int = Calendar.getInstance().get(Calendar.MONTH)+1
@@ -100,4 +102,14 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
         }
         return imgUrl
     }
+
+    fun getMonthTips (mMonth: String, mGet:List<TipsItem>):String{
+        var mTips:String = ""
+        when (mMonth){
+            "oct" -> mTips = mGet.get(0).oct.toString()
+            else -> mTips = "Sin Datos"
+        }
+        return mTips
+    }
  }
+
