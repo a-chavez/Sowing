@@ -45,8 +45,6 @@ class Home : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fragmentManager?.popBackStack(null, POP_BACK_STACK_INCLUSIVE);
-
         val mFullMonth:String = mViewModel.getCurrentMonth()[1]
         val mActualMonth:String = mViewModel.getCurrentMonth()[0]
         val mBundle = Bundle()

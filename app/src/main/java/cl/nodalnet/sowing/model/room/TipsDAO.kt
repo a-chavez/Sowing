@@ -16,5 +16,4 @@ interface TipsDAO {
 
     @Query("SELECT * FROM tips_table WHERE month=:mMonth")
     fun getMonthTips(mMonth: String): LiveData<TipsItem>
-
 }

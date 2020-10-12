@@ -1,6 +1,9 @@
 package cl.nodalnet.sowing
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,9 +15,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
-import cl.nodalnet.sowing.model.room.SowingItem
-import cl.nodalnet.sowing.model.room.TipsItem
-import cl.nodalnet.sowing.model.viewmodel.MyAdapter
 import cl.nodalnet.sowing.model.viewmodel.MyViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -50,10 +50,10 @@ class TipsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_tips, container, false)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var mTips =""
-        var mGet:List<TipsItem> = emptyList()
         val mUrlImg = mViewModel.getTitleImgFromMonth(mMonth.toString())
         val mMeow: MeowBottomNavigation = meowArrozBottom
 
@@ -84,13 +84,17 @@ class TipsFragment : Fragment() {
         tvSubTileMonth.setText("Consejos del Mes")
         tvTitleInter2.setText(mTitle)
 
-        mViewModel.exposeLiveDataTips().observe(viewLifecycleOwner, Observer {
-
-            Log.d("Arroz 0", it.get(0).oct.toString())
-            tvTips.setText(it.get(0).oct.toString())
-        })
-
-
+        mMonth?.let {
+            mViewModel.getMonthTips(it).observe(viewLifecycleOwner, Observer {
+                tvTips1.setText(it.tip1)
+                tvTips2.setText(it.tip2)
+                tvTips3.setText(it.tip3)
+                tvTips4.setText(it.tip4)
+                tvTips5.setText(it.tip5)
+                tvTips6.setText(it.tip6)
+                tvTips7.setText(it.tip7)
+            })
+        }
     }
 
 }

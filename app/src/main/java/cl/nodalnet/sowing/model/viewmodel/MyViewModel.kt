@@ -45,6 +45,10 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
         return mMyRepository.getOneSeed(mName)
     }
 
+    fun getMonthTips(mMonth: String) : LiveData<TipsItem>{
+        return mMyRepository.getMonthTips(mMonth)
+    }
+
     fun getSeedFromMonth(mMonth:String, mSowing:List<SowingItem>) : List<SowingItem>{
         return mMyRepository.getSeedFromMonth(mMonth,mSowing)
     }
@@ -103,13 +107,5 @@ class MyViewModel (application: Application): AndroidViewModel(application) {
         return imgUrl
     }
 
-    fun getMonthTips (mMonth: String, mGet:List<TipsItem>):String{
-        var mTips:String = ""
-        when (mMonth){
-            "oct" -> mTips = mGet.get(0).oct.toString()
-            else -> mTips = "Sin Datos"
-        }
-        return mTips
-    }
  }
 

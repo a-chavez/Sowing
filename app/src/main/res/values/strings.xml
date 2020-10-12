@@ -27,5 +27,6 @@
     <string name="calendar_title">Calendario</string>
     <string name="seedList">Listado de semillas</string>
     <string name="sowingGuide">Guia de siembra</string>
+    <string name="tips1">tips1</string>
 
 </resources>

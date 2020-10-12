@@ -81,6 +81,10 @@ class MyRepository (private val mMasterDAO: MasterDAO, private val mTipsDAO: Tip
         return mMasterDAO.getOneSeed(mName)
     }
 
+    fun getMonthTips(mMonth: String): LiveData<TipsItem>{
+        return mTipsDAO.getMonthTips(mMonth)
+    }
+
     fun getSeedFromMonth(mMonth:String, mSowing:List<SowingItem>) : List<SowingItem>{
         for(data in mSowing){
             if (mMonth=="ene" && data.ene=="1") mDataSowingItem.add(data)
@@ -99,4 +103,7 @@ class MyRepository (private val mMasterDAO: MasterDAO, private val mTipsDAO: Tip
         return mDataSowingItem
 
     }
+
+
+
 }
